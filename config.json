@@ -1,0 +1,10 @@
+{
+  "parameters":
+  {
+    "secret_key": "83we23djd34edh2443ehddb",
+    "local_server": true,
+    "local_uri": "mysql://root@127.0.0.1/blog_app",
+    "prod_uri": "",
+    "title": "Indonesia Traveler"
+  }
+}

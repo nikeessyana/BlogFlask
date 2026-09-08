@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Future Imperfect by HTML5 UP</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{{url_for('static',filename = 'assets/css/main.css')}}"/>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+    <!-- Header -->
+
+    <header id="header">
+        <h1><a href="/">{{param['title']}}</a></h1>
+        <nav class="links">
+            <ul>
+                <li><a href="{{url_for('main')}}">Home</a></li>
+                <li><a href="{{url_for('main')}}">Post</a></li>
+                <li><a href="{{url_for('about')}}">About</a></li>
+                <li><a href="{{url_for('login')}}">Login</a></li>
+                <li><a href="{{url_for('contact')}}">Contact</a></li>
+            </ul>
+        </nav>
+        <nav class="main">
+            <ul>
+                <li class="menu">
+                    <a class="fa-bars" href="#menu">Menu</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Menu -->
+    <section id="menu">
+
+        <!-- Actions -->
+        <section>
+            <ul class="actions stacked">
+                <li><a href="#" class="button large fit">Log In</a></li>
+            </ul>
+        </section>
+
+    </section>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+        {% for post in posts %}
+        <article class="post">
+            <header>
+                <div class="title">
+                    <h2><a href="/post/{{post.slug}}">{{post.title}}</a></h2>
+                    <p>{{post.location}}</p>
+                </div>
+                <div class="meta">
+                    <time class="published" datetime="2015-11-01">{{post.date_post}}</time>
+                    <a href="#" class="author"><span class="name">{{post.author}}</span><img src="images/avatar.jpg"
+                                                                                             alt=""/></a>
+                </div>
+            </header>
+            <a href="post.html" class="image featured"><img src="{{post.image}}" alt=""/></a>
+            <p>{{post.content_1}}</p>
+            <footer>
+                <ul class="actions">
+                    <li><a href="/post/{{post.slug}}" class="button large">Continue Reading</a></li>
+                </ul>
+                <ul class="stats">
+                    <li><a href="#">General</a></li>
+                    <li><a href="#" class="icon solid fa-heart">28</a></li>
+                    <li><a href="#" class="icon solid fa-comment">128</a></li>
+                </ul>
+            </footer>
+        </article>
+        {% endfor %}
+
+
+        <!-- Pagination -->
+        <ul class="actions pagination">
+            <li><a href="{{prev}}" class="disabled button large previous">Previous Page</a></li>
+            <li><a href="{{next}}" class="button large next">Next Page</a></li>
+        </ul>
+
+    </div>
+
+    <!-- Sidebar -->
+    <section id="sidebar">
+
+        <!-- Intro -->
+        <section id="intro">
+            <a href="#" class="logo"><img src="images/logo.jpg" alt=""/></a>
+            <header>
+                <h2>Wonderful Indonesia</h2>
+                <p>Indonesia is not wonderful its wonderland</p>
+            </header>
+        </section>
+
+        <!-- Mini Posts -->
+
+        <!-- Footer -->
+        <section id="footer">
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+            <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
+                    href="http://unsplash.com">Unsplash</a>.</p>
+        </section>
+
+    </section>
+
+</div>
+
+<!-- Scripts -->
+<script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/browser.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/breakpoints.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/util.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/main.js')}}"></script>
+
+</body>
+</html>

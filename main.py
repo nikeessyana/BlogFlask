@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import *
 import json
 import math
+import os
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user, UserMixin
 from sqlalchemy.testing.pickleable import User
 
@@ -11,12 +12,21 @@ app = Flask(__name__)
 with open("config.json", "r") as c:
     param = json.load(c)["parameters"]
 
-if(param['local_server']):
-    app.config['SQLALCHEMY_DATABASE_URI'] = param['local_uri']
-else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = param['prod_uri']
+# Database
+database_url = os.getenv("DATABASE_URL")
 
-app.config['SECRET_KEY']=param['secret_key']
+if database_url:
+    # Production: Railway
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+else:
+    # Local development
+    app.config['SQLALCHEMY_DATABASE_URI'] = param['local_uri']
+
+# Secret key
+app.config['SECRET_KEY'] = os.getenv(
+    "SECRET_KEY",
+    param['secret_key']
+)
 
 db = SQLAlchemy(app)
 login_manager = LoginManager()

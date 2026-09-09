@@ -1,7 +1,8 @@
 {
-  "parameters":
-  {
-    "local_server": true,
-    "title": "Indonesia Traveler"
-  }
+  "parameters": {
+        "secret_key": "YOUR_LOCAL_SECRET_KEY",
+        "local_server": true,
+        "local_uri": "YOUR_LOCAL_DATABASE_URI",
+        "title": "Indonesia Traveler"
+    }
 }
